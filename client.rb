@@ -1,6 +1,6 @@
 require 'socket'
 
-socket = TCPSocket.open("localhost", 3000)
+socket = TCPSocket.new("localhost", 3000)
 
 while message = socket.gets
   puts message
