@@ -1,9 +1,10 @@
 require 'socket'
 
 server = TCPServer.new(3000)
+puts "Listening on port #{server.local_address.ip_port}"
 
-socket = server.accept
+Socket.accept_loop(server) do |socket|
+  socket.write "hello\n"
 
-socket.write "hello\n"
-
-socket.close
+  socket.close
+end
